@@ -16,10 +16,10 @@ inputs:
     description: 'the token (in most cases this is secrets.GITHUB_TOKEN)'
   user:
     required: true
-    description: 'the owner of the fork where the pull request originated'
+    description: 'the owner of the base repository (not the fork)'
   repo:
     required: true
-    description: 'the reporitory name (of the fork) where the pull request originated'
+    description: 'the reporitory name for the pull request'
 runs:
   using: 'node12'
   main: 'dist/index.js'
