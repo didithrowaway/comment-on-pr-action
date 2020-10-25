@@ -3,7 +3,7 @@ import * as github from '@actions/github'
 import {OctokitResponse, IssuesCreateCommentResponseData} from '@octokit/types'
 
 export async function postComment(input: InputSettings): Promise<string> {
-  return new Promise<string>(async resolve => {
+  return new Promise<string>(async (resolve, reject) => {
     const octokit = github.getOctokit(input.token)
     const messageBody = '${input.commentPrefix}\n${input.message}'
 
@@ -21,7 +21,7 @@ export async function postComment(input: InputSettings): Promise<string> {
         resolve(response.data.url)
       }
     } catch (e) {
-      throw new TypeError(e.message)
+      reject(e.message)
     }
   })
 }

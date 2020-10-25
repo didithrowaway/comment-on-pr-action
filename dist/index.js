@@ -4965,7 +4965,7 @@ exports.postComment = void 0;
 const github = __importStar(__webpack_require__(438));
 function postComment(input) {
     return __awaiter(this, void 0, void 0, function* () {
-        return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const octokit = github.getOctokit(input.token);
             const messageBody = '${input.commentPrefix}\n${input.message}';
             try {
@@ -4980,7 +4980,7 @@ function postComment(input) {
                 }
             }
             catch (e) {
-                throw new TypeError(e.message);
+                reject(e.message);
             }
         }));
     });

@@ -5,10 +5,9 @@ import {postComment} from './comment'
 async function run(): Promise<void> {
   try {
     const input = getInputs()
-
     const url = await postComment(input)
-    core.info(`Posted comment ${url} on pull request ${input.prId}`)
 
+    core.info(`Posted comment ${url} on pull request ${input.prId}`)
     core.setOutput('url', url)
   } catch (error) {
     core.setFailed(error.message)
