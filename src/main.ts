@@ -10,8 +10,8 @@ async function run(): Promise<void> {
     core.info(`Posted comment ${url} on pull request ${input.prId}`)
     core.setOutput('url', url)
   } catch (error) {
-    core.error(`Failed: ${error.message}`)
-    core.setFailed(error.message)
+    core.error(`Failed: ${error}`)
+    core.setFailed(error)
   }
 }
 
