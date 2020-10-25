@@ -1,11 +1,25 @@
-name: 'Your name here'
+name: 'comment-on-pr'
 description: 'Provide a description here'
-author: 'Your name or organization here'
+author: 'didiladi'
 inputs:
-  milliseconds: # change this
+  pr-id:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'the id of the pull request to comment on'
+  comment-prefix:
+    required: true
+    description: 'the hidden prefix contained in the comment (this usually comes from action @didiladi/trigger-workflow-for-pr)'
+  message:
+    required: true
+    description: 'the message to post on the pull request'
+  token:
+    required: true
+    description: 'the token (in most cases this is secrets.GITHUB_TOKEN)'
+  user:
+    required: true
+    description: 'the owner of the fork where the pull request originated'
+  repo:
+    required: true
+    description: 'the reporitory name (of the fork) where the pull request originated'
 runs:
   using: 'node12'
   main: 'dist/index.js'

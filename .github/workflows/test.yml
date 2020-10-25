@@ -21,4 +21,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          milliseconds: 1000
+          pr-id: 1
+          comment-prefix: '<!-- Do not edit -->'
+          message: "This comment was posted from the comment-on-pr action. It works! 🥳"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: didithrowaway
+          repo: comment-on-pr-action
