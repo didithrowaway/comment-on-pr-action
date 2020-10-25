@@ -1435,6 +1435,7 @@ function run() {
             core.setOutput('url', url);
         }
         catch (error) {
+            core.error('Failed: ${error.message}');
             core.setFailed(error.message);
         }
     });
@@ -4967,7 +4968,7 @@ function postComment(input) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const octokit = github.getOctokit(input.token);
-            const messageBody = '${input.commentPrefix}\n${input.message}';
+            const messageBody = `${input.commentPrefix}\n${input.message}`;
             try {
                 const response = yield octokit.issues.createComment({
                     owner: input.user,
@@ -4976,7 +4977,7 @@ function postComment(input) {
                     body: JSON.stringify(messageBody)
                 });
                 if (isSuccessful(response.status)) {
-                    resolve(response.data.url);
+                    resolve(response.data.html_url);
                 }
             }
             catch (e) {
