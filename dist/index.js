@@ -4963,24 +4963,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.postComment = void 0;
 const github = __importStar(__webpack_require__(438));
-const core = __importStar(__webpack_require__(186));
 function postComment(input) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
             const octokit = github.getOctokit(input.token);
             const messageBody = '${input.commentPrefix}\n${input.message}';
-            const response = yield octokit.issues.createComment({
-                owner: input.user,
-                repo: input.repo,
-                issue_number: input.prId,
-                body: JSON.stringify(messageBody)
-            });
-            if (isSuccessful(response.status)) {
-                resolve(response.data.url);
+            try {
+                const response = yield octokit.issues.createComment({
+                    owner: input.user,
+                    repo: input.repo,
+                    issue_number: input.prId,
+                    body: JSON.stringify(messageBody)
+                });
+                if (isSuccessful(response.status)) {
+                    resolve(response.data.url);
+                }
             }
-            else {
-                core.error('Posting comment resulted in status code: ${response.status}');
-                resolve('');
+            catch (e) {
+                throw new TypeError(e.message);
             }
         }));
     });
