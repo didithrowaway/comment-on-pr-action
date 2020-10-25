@@ -25,5 +25,5 @@ jobs:
           comment-prefix: '<!-- Do not edit -->'
           message: "This comment was posted from the comment-on-pr action. It works! 🥳"
           token: ${{ secrets.GITHUB_TOKEN }}
-          user: didithrowaway
+          user: didiladi
           repo: comment-on-pr-action
