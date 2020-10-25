@@ -1435,7 +1435,7 @@ function run() {
             core.setOutput('url', url);
         }
         catch (error) {
-            core.error('Failed: ${error.message}');
+            core.error(`Failed: ${error.message}`);
             core.setFailed(error.message);
         }
     });
